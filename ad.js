@@ -64,7 +64,7 @@
         var overlay = document.createElement('div');
         overlay.style.cssText =
             "position:absolute;top:0px;left:0px;width:100%;height:100%;opacity:0;z-index:2147483647;background:#000;";
-        overlay.onclick = window.open(targetUrl);
+        overlay.onclick = function(){window.open(targetUrl);}
         document.body.appendChild(overlay);
         console.log('setup overlay ok');
     }, 100);

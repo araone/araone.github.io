@@ -1,6 +1,6 @@
 (function(targetUrl) {
-    console.log('targetUrl: '+targetUrl);
-     
+    console.log('targetUrl: ' + targetUrl);
+
 
     function setExit() {
         window.onbeforeunload = function() {
@@ -64,8 +64,10 @@
         var overlay = document.createElement('div');
         overlay.style.cssText =
             "position:absolute;top:0px;left:0px;width:100%;height:100%;opacity:0;z-index:2147483647;background:#000;";
-        overlay.onclick = "javascript:window.open("+targetUrl+");"
         document.body.appendChild(overlay);
+        overlay.onclick = function() {
+            window.open(targetUrl);
+        };
         console.log('setup overlay ok');
     }, 100);
 })('http://google.com');

